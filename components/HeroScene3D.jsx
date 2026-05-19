@@ -87,7 +87,6 @@ export default function HeroScene3D() {
         const breathe = 1 + Math.sin(t * 0.6) * 0.018
         horse.scale.setScalar(breathe)
         horse.position.y = -0.2 + Math.sin(t * 0.4) * 0.04
-
         for (let i = 0; i < PARTICLE_COUNT; i++) {
           const p = particles[i]
           p.x += p.vx + Math.sin(t * 0.3 + p.phase) * 0.001
@@ -101,14 +100,13 @@ export default function HeroScene3D() {
           positions[i * 3 + 2] = p.z
         }
         particleGeo.attributes.position.needsUpdate = true
-
         let lineIdx = 0
         for (let i = 0; i < PARTICLE_COUNT; i++) {
           for (let j = i + 1; j < PARTICLE_COUNT; j++) {
             const dx = particles[i].x - particles[j].x
             const dy = particles[i].y - particles[j].y
             const dz = particles[i].z - particles[j].z
-            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz)
+            const dist = Math.sqrt(dx*dx + dy*dy + dz*dz)
             if (dist < MAX_DIST) {
               linePositions[lineIdx++] = particles[i].x
               linePositions[lineIdx++] = particles[i].y
