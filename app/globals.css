@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-beige font-inter text-gris-fonce;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair text-violet-fonce;
+    line-height: 1.15;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto px-5 md:px-10 lg:px-20;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-8 py-4 bg-or text-white font-inter font-semibold text-base rounded-full transition-all duration-300 hover:bg-or-fonce hover:shadow-lg hover:shadow-or/30 hover:scale-105 active:scale-95;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-violet text-violet font-inter font-semibold text-base rounded-full transition-all duration-300 hover:bg-violet hover:text-white hover:scale-105 active:scale-95;
+  }
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 px-8 py-4 border-2 border-white/60 text-white font-inter font-semibold text-base rounded-full transition-all duration-300 hover:bg-white hover:text-violet-fonce hover:scale-105 active:scale-95;
+  }
+  .section-py {
+    @apply py-24 md:py-32;
+  }
+  .card {
+    @apply bg-white rounded-2xl p-8 border border-gris-clair transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-violet/10 hover:border-or/30 relative overflow-hidden cursor-default;
+  }
+  .tag-label {
+    @apply text-or font-inter font-semibold text-sm tracking-widest uppercase;
+  }
+}
