@@ -1,7 +1,7 @@
 'use client'
 import { Suspense, lazy } from 'react'
 import Link from 'next/link'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, Check, ChevronDown, Star, MapPin } from 'lucide-react'
 import GradientBlob from '../components/GradientBlob'
 import FadeIn from '../components/FadeIn'
@@ -14,13 +14,13 @@ const HeroScene3D = lazy(() => import('../components/HeroScene3D'))
 const situations = [
   {
     icon: '💬',
-    title: 'Le « Bug » de communication',
+    title: 'Le « Bug » de communication',
     desc: "Les échanges se crispent et les ego prennent le dessus. Ce n'est pas un problème de caractère, c'est une réponse biologique de défense face à l'insécurité.",
     consequences: ["Réunions improductives, décisions ralenties", "Climat de méfiance qui s'installe", "Conflits latents qui s'accumulent jusqu'à la crise"],
   },
   {
     icon: '🚪',
-    title: 'L'érosion des talents',
+    title: "L'érosion des talents",
     desc: "Vos cadres à haut potentiel s'épuisent ou s'en vont sans raison apparente. Ils fuient souvent un climat de stress chronique invisible mais omniprésent.",
     consequences: ["Turnover coûteux, perte de compétences clés", "Démotivation collective difficile à enrayer", "Difficultés de recrutement sur postes stratégiques"],
   },
@@ -36,48 +36,55 @@ const approche = [
   {
     n: '01',
     title: 'Diagnostic du système nerveux collectif',
-    desc: "Nous analysons la « température » neurologique de votre direction pour identifier les freins invisibles à la collaboration et à la prise de décision stratégique.",
+    desc: "Nous analysons la « température » neurologique de votre direction pour identifier les freins invisibles à la collaboration et à la prise de décision stratégique.",
     details: ["Entretiens structurés avec votre équipe dirigeante", "Observation des dynamiques collectives en situation réelle", "Analyse des indicateurs RH (turnover, climat social, absentéisme)", "Cartographie des états nerveux dominants — Ventral, Sympathique, Dorsal"],
     livrable: "Rapport de diagnostic avec cartographie neurologique, identification des saboteurs collectifs et recommandations stratégiques.",
-    duree: "Durée : 2 à 3 semaines",
+    duree: "Durée : 2 à 3 semaines",
   },
   {
     n: '02',
     title: 'Neurosciences Comportementales & Leadership',
-    desc: "Nous formons vos dirigeants à identifier leurs propres « saboteurs » et à acquérir des protocoles de régulation pour rester lucides, même en pleine tempête.",
-    details: ["Les 3 états du système nerveux et leur impact sur la décision", "Mécanisme neurobiologique de la prise de décision sous pression", "Protocoles de régulation validés : cohérence cardiaque, ancrage somatique", "Co-régulation : leur état nerveux se diffuse à toute l'équipe"],
+    desc: "Nous formons vos dirigeants à identifier leurs propres « saboteurs » et à acquérir des protocoles de régulation pour rester lucides, même en pleine tempête.",
+    details: ["Les 3 états du système nerveux et leur impact sur la décision", "Mécanisme neurobiologique de la prise de décision sous pression", "Protocoles de régulation validés : cohérence cardiaque, ancrage somatique", "Co-régulation : leur état nerveux se diffuse à toute l'équipe"],
     livrable: "Programme 21h · Certification Qualiopi · Éligible financement OPCO",
-    duree: "Format : 3 jours ou 3×1 jour espacés",
+    duree: "Format : 3 jours ou 3×1 jour espacés",
   },
   {
     n: '03',
-    title: 'L'Équicoaching : le miroir de votre leadership',
+    title: "L'Équicoaching : le miroir de votre leadership",
     desc: "Utilisé comme un accélérateur de vérité pour les CODIR, le cheval révèle en quelques minutes votre capacité à inspirer la confiance et à diriger sans user de la force ou de la contrainte.",
     details: ["Révèle l'écart entre votre intention et votre impact réel", "Seul feedback impossible à intellectualiser ou à rationaliser", "Révélation instantanée de vos saboteurs dominants en action", "Transposition directe aux dynamiques de votre équipe"],
     livrable: "Livret de restitution individuel · Plan d'action sous 10 jours",
-    duree: "Format : demi-journée ou journée complète",
+    duree: "Format : demi-journée ou journée complète",
   },
 ]
 
 const testimonials = [
   {
-    quote: "L'approche neurosciences nous a permis d'objectiver des dynamiques que nous pressentions sans parvenir à les traiter. La Théorie Polyvagale a donné un langage commun à notre équipe de direction pour réguler nos états nerveux collectifs. La rigueur scientifique de la méthode a convaincu nos managers les plus sceptiques.",
+    quote: "L'approche neurosciences nous a permis d'objectiver des dynamiques que nous pressentions sans parvenir à les traiter. La Théorie Polyvagale a donné un langage commun à notre équipe de direction pour réguler nos états nerveux collectifs.",
     name: "Marie L.",
     role: "Directrice des Ressources Humaines",
     company: "Groupe Industriel, 850 collaborateurs",
   },
   {
-    quote: "Comprendre mes saboteurs intérieurs a été un déclic. Je réalisais que 80 % de mes décisions étaient pilotées par la peur de ne pas être à la hauteur. Les outils de régulation me permettent maintenant d'identifier quand un saboteur prend le volant — et de reprendre la main.",
+    quote: "Comprendre mes saboteurs intérieurs a été un déclic. Je réalisais que 80 % de mes décisions étaient pilotées par la peur de ne pas être à la hauteur.",
     name: "Thomas D.",
     role: "Directeur de Business Unit",
     company: "Groupe technologique",
   },
   {
-    quote: "Le cheval m'a montré en 10 minutes ce que des mois de coaching n'avaient pas réussi à me faire voir : mon Contrôleur était aux commandes. Avant chaque réunion stratégique, je prends 5 minutes pour revenir en état ventral. Mes équipes ont immédiatement senti la différence.",
+    quote: "Le cheval m'a montré en 10 minutes ce que des mois de coaching n'avaient pas réussi à me faire voir : mon Contrôleur était aux commandes.",
     name: "Sophie R.",
     role: "Directrice Générale",
     company: "Groupe retail premium",
   },
+]
+
+const badges = [
+  'Certification Qualiopi',
+  "15+ ans d'expérience terrain",
+  'Partout en France',
+  '150+ leaders formés',
 ]
 
 export default function HomePage() {
@@ -104,7 +111,7 @@ export default function HomePage() {
           </motion.div>
 
           <h1 className="text-white text-4xl md:text-6xl lg:text-7xl font-playfair font-semibold mb-4 max-w-5xl leading-tight">
-            <TextReveal>Le Leadership sous un nouvel angle :</TextReveal>
+            <TextReveal>Le Leadership sous un nouvel angle :</TextReveal>
             <span className="text-or block mt-2">
               <TextReveal delay={0.2}>la Neuro-Régulation</TextReveal>
             </span>
@@ -116,7 +123,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-white/80 text-xl md:text-2xl font-playfair font-semibold mb-6 max-w-3xl leading-snug"
           >
-            Pourquoi vos meilleures décisions se prennent-elles rarement sous pression ?
+            Pourquoi vos meilleures décisions se prennent-elles rarement sous pression ?
           </motion.h2>
 
           <motion.div
@@ -138,8 +145,8 @@ export default function HomePage() {
             className="max-w-2xl mb-8"
           >
             <p className="text-white/65 font-inter leading-relaxed">
-              Une réunion qui s&apos;enflamme, une crise de croissance, un collaborateur qui vous défie...
-              et votre cerveau bascule instantanément en mode « survie ». La vision se rétrécit,
+              Une réunion qui s&apos;enflamme, une crise de croissance, un collaborateur qui vous défie&hellip;
+              et votre cerveau bascule instantanément en mode &laquo; survie &raquo;. La vision se rétrécit,
               l&apos;empathie disparaît, et la réaction automatique l&apos;emporte sur la stratégie réfléchie.
             </p>
           </motion.div>
@@ -174,12 +181,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="flex flex-wrap gap-6 text-white/65 font-inter text-sm"
           >
-            {[
-              'Certification Qualiopi',
-              '15+ ans d\'expérience terrain',
-              'Partout en France',
-              '150+ leaders formés',
-            ].map((badge) => (
+            {badges.map((badge) => (
               <span key={badge} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-or" />{badge}
               </span>
@@ -197,7 +199,7 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* QUI SUIS-JE — Sarah Dabancens */}
+      {/* QUI SUIS-JE */}
       <section className="bg-white py-24 md:py-32 overflow-hidden">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -270,7 +272,7 @@ export default function HomePage() {
               </div>
               <div className="grid grid-cols-3 gap-4 border-t border-gris-clair pt-6">
                 {[
-                  { value: '15', suffix: '+', label: 'ans d\'expérience terrain' },
+                  { value: '15', suffix: '+', label: "ans d'expérience terrain" },
                   { value: '150', suffix: '+', label: 'leaders formés' },
                   { value: '98', suffix: '%', label: 'taux de satisfaction' },
                 ].map((stat) => (
@@ -287,7 +289,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SITUATIONS QUI COÛTENT CHER */}
+      {/* SITUATIONS */}
       <section className="bg-beige py-24 md:py-32">
         <div className="container">
           <FadeIn className="text-center mb-6">
@@ -391,21 +393,10 @@ export default function HomePage() {
               </FadeIn>
             ))}
           </div>
-
-          <FadeIn delay={0.3} className="mt-12 max-w-3xl mx-auto">
-            <div className="bg-beige rounded-2xl p-8 border border-gris-clair">
-              <p className="font-playfair font-semibold text-xl text-violet-fonce mb-3 text-center">Suivi & Ancrage dans la durée</p>
-              <p className="text-gris-moyen font-inter leading-relaxed text-center">
-                Notre accompagnement ne s&apos;arrête pas à la fin de la formation. Nous assurons un suivi
-                à 3 et 6 mois pour mesurer l&apos;impact, ajuster les protocoles si nécessaire, et garantir
-                l&apos;ancrage durable des nouvelles pratiques dans votre organisation.
-              </p>
-            </div>
-          </FadeIn>
         </div>
       </section>
 
-      {/* PRÉSENCE NATIONALE */}
+      {/* PRESENCE NATIONALE */}
       <section className="bg-violet py-20">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -446,7 +437,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROMESSE FINALE + TÉMOIGNAGES */}
+      {/* TEMOIGNAGES */}
       <section className="bg-beige py-24 md:py-32">
         <div className="container">
           <FadeIn className="text-center mb-16">
@@ -510,7 +501,6 @@ export default function HomePage() {
               Un échange stratégique pour faire le point sur vos enjeux actuels
               et découvrir comment la neuro-régulation peut sécuriser votre croissance.
             </p>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10 text-left max-w-xl mx-auto">
               {[
                 "Analyse de votre situation actuelle (CODIR, managers, dynamiques)",
@@ -524,11 +514,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-
             <MagneticButton href="https://calendly.com/sara-dabancens/seance-decouverte">
               Prendre rendez-vous <ArrowRight className="w-4 h-4" />
             </MagneticButton>
-
             <p className="text-white/35 font-inter text-sm mt-6">
               30 minutes · Gratuit · Sans engagement · Visioconférence
             </p>
